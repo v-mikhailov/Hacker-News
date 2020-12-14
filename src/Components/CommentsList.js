@@ -43,7 +43,7 @@ const CommentsList = ({comments}) => {
 
       ) : (
         <div>
-          Comments: 0
+          <p>Comments: 0</p>
           <p>No one has commented yet</p>
         </div>
       )

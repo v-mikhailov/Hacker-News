@@ -34,7 +34,6 @@ const NewsList = () => {
     return () => clearInterval(timer);
   }, [dispatch])
 
-
   return(
     <Container>
     {
