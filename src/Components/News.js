@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ListItem, makeStyles, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-import { getNews } from '../Redux/actions';
+import { getItems } from '../Redux/actions';
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -45,7 +45,7 @@ const News = ({newsId}) => {
   }
 
   React.useEffect(() => {
-    dispatch(getNews(newsId));
+    dispatch(getItems(newsId));
   }, [dispatch, newsId])
 
   return (
@@ -84,11 +84,7 @@ const News = ({newsId}) => {
                 {convertDate(currentNews.time)}
               </Typography>
             </div>
-  
           </div>
-          
-          
-           
         </ListItem>
       )
     }

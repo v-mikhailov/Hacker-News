@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Button, makeStyles } from '@material-ui/co
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getAllNews } from '../Redux/actions';
+import { getAllNews, getItems } from '../Redux/actions';
 
 const useStyles = makeStyles((theme) => ({
   toolBar: {
@@ -18,12 +18,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Header = ({isMainPage = true}) => {
+const Header = ({isMainPage = true, newsId}) => {
   const styles = useStyles();
   const dispatch = useDispatch();
 
   const handleClick = () => {
     dispatch(getAllNews())
+  }
+
+  const handleCommentClick = () => {
+    dispatch(getItems(newsId, 'fullNews'));
   }
 
   return(
@@ -34,15 +38,24 @@ const Header = ({isMainPage = true}) => {
       </Typography>
       <div>
       {
-        isMainPage && (
+        isMainPage ? (
           <Button 
           color="inherit"
           variant="outlined"
           onClick={handleClick}
           className={styles.refreshBttn}
-        >
-          Refresh
-        </Button>
+          >
+            Refresh
+          </Button>
+        ) : (
+          <Button 
+          color="inherit"
+          variant="outlined"
+          onClick={handleCommentClick}
+          className={styles.refreshBttn}
+          >
+            Refresh comments
+          </Button>
         )
       }
         <Link to='/' className={styles.link}>

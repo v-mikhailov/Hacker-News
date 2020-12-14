@@ -1,8 +1,9 @@
-import { API_STATUS_FAILURE, API_STATUS_STARTED, GET_ALL_NEWS_SUCCESS, GET_NEWS_SUCCESS } from './constants';
+import { API_STATUS_FAILURE, API_STATUS_STARTED, GET_ALL_NEWS_SUCCESS, GET_NEWS_SUCCESS, GET_ONE_NEWS } from './constants';
 
 const initialState = {
   allNewsIds: [],
   allNews: [],
+  oneNews: {},
   loading: false,
   error: false
 }
@@ -31,6 +32,12 @@ export const newsReducer = (state = initialState, action) => {
         allNews: state.allNews.concat(action.payload),
         loading: false,
         error: false
+      }
+    }
+    case GET_ONE_NEWS: {
+      return {
+        ...state,
+        oneNews: action.payload
       }
     }
     case API_STATUS_FAILURE: {
